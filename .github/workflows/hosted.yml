@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted   # 👈 changed here
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run one-line script
+        run: echo Hello, world!
+
+      - name: Create folder and files
+        run: |
+          echo "Creating folder..."
+          mkdir -p my-folder
+
+          echo "Creating files..."
+          echo "This is file 1" > my-folder/file1.txt
+          echo "This is file 2" > my-folder/file2.txt
+          echo "This is file 3" > my-folder/file3.txt
+
+          echo "Listing files:"
+          ls -l my-folder
